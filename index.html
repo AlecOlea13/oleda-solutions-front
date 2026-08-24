@@ -57,7 +57,6 @@
     border-radius: 4px;
   }
 
-  
   .wrap {
     max-width: 1180px;
     margin: 0 auto;
@@ -609,6 +608,21 @@
     font-weight: 600;
   }
 
+  /* ═══ multi-caso tabs ═══ */
+  .caso-tabs {
+    display: flex; gap: 8px; justify-content: center; margin-bottom: 32px; flex-wrap: wrap;
+  }
+  .caso-tab {
+    padding: 10px 22px; border-radius: 24px; font-size: 13.5px; font-weight: 600;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text-2);
+    cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .caso-tab.active {
+    background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+  }
+  .caso-panel { display: none; }
+  .caso-panel.active { display: block; }
+
   /* ═══════════ proceso ═══════════ */
   .proceso { padding: 100px 0 120px; background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .proceso-grid {
@@ -1014,46 +1028,101 @@
     </div>
   </section>
 
-  <!-- ═══════════ CASO DE ÉXITO ═══════════ -->
+  <!-- ═══════════ CASOS DE ÉXITO ═══════════ -->
   <section class="caso" id="caso">
     <div class="wrap">
-      <div class="caso-box reveal">
-        <div>
-          <div class="caso-badge">🏗️ Caso real · Sector industrial</div>
-          <h3 class="caso-title">Del cuaderno de notas a un sistema completo</h3>
-          <p class="caso-desc">
-            Una empresa de renta y venta de montacargas en Guadalajara operaba con hojas de cálculo dispersas y control manual de inventario. Construimos un sistema que hoy centraliza toda su operación diaria.
-          </p>
-          <div class="caso-stats">
-            <div>
-              <div class="caso-stat-num">14</div>
-              <div class="caso-stat-label">Módulos integrados</div>
-            </div>
-            <div>
-              <div class="caso-stat-num">6</div>
-              <div class="caso-stat-label">Roles de usuario</div>
-            </div>
-            <div>
-              <div class="caso-stat-num">100%</div>
-              <div class="caso-stat-label">Facturación digital</div>
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Resultados reales</div>
+        <h2 class="section-title">Sistemas que ya están en producción</h2>
+        <p class="section-desc">Cada sistema se construye para el rubro específico del cliente — esto es lo que hemos hecho.</p>
+      </div>
+
+      <div class="caso-tabs reveal">
+        <button class="caso-tab active" onclick="switchCaso('pipsa', this)">🏗️ Renta de montacargas</button>
+        <button class="caso-tab" onclick="switchCaso('jit', this)">🚚 Logística 3PL</button>
+      </div>
+
+      <!-- ═══ CASO 1: MONTACARGAS ═══ -->
+      <div class="caso-panel active" id="caso-pipsa">
+        <div class="caso-box reveal">
+          <div>
+            <div class="caso-badge">🏗️ Caso real · Sector industrial</div>
+            <h3 class="caso-title">Del cuaderno de notas a un sistema completo</h3>
+            <p class="caso-desc">
+              Una empresa de renta y venta de montacargas en Guadalajara operaba con hojas de cálculo dispersas y control manual de inventario. Construimos un sistema que hoy centraliza toda su operación diaria.
+            </p>
+            <div class="caso-stats">
+              <div>
+                <div class="caso-stat-num">14</div>
+                <div class="caso-stat-label">Módulos integrados</div>
+              </div>
+              <div>
+                <div class="caso-stat-num">6</div>
+                <div class="caso-stat-label">Roles de usuario</div>
+              </div>
+              <div>
+                <div class="caso-stat-num">100%</div>
+                <div class="caso-stat-label">Facturación digital</div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="caso-visual">
-          <img
-            src="https://res.cloudinary.com/dijxgoytw/image/upload/v1787333535/Gemini_Generated_Image_tjtg15tjtg15tjtg_qzrdn2.jpg"
-            alt="Panel de control del sistema"
-            class="caso-screenshot"
-          />
-          <div class="caso-testimonio">
-            <p class="caso-testimonio-quote">Cambió en un 95% la forma en que trabajamos. Procesos que nos tomaban horas ahora son cuestión de minutos.</p>
-            <p class="caso-testimonio-autor">— <b>Director de Operaciones</b>, empresa de renta y venta de montacargas en Guadalajara</p>
+          <div class="caso-visual">
+            <img
+              src="https://res.cloudinary.com/dijxgoytw/image/upload/v1787333535/Gemini_Generated_Image_tjtg15tjtg15tjtg_qzrdn2.jpg"
+              alt="Panel de control del sistema de gestión de flota"
+              class="caso-screenshot"
+            />
+            <div class="caso-testimonio">
+              <p class="caso-testimonio-quote">Cambió en un 95% la forma en que trabajamos. Procesos que nos tomaban horas ahora son cuestión de minutos.</p>
+              <p class="caso-testimonio-autor">— <b>Director de Operaciones</b>, empresa de renta y venta de montacargas en Guadalajara</p>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- ═══ CASO 2: LOGÍSTICA 3PL ═══ -->
+      <div class="caso-panel" id="caso-jit">
+        <div class="caso-box reveal">
+          <div>
+            <div class="caso-badge">🚚 Caso real · Logística 3PL</div>
+            <h3 class="caso-title">Visibilidad total del corredor cross-border</h3>
+            <p class="caso-desc">
+              Una empresa de logística con operación entre Estados Unidos y México necesitaba seguimiento en tiempo real de envíos, capacidad de almacenes y cruces fronterizos. Construimos una torre de control que consolida toda la operación en un solo lugar.
+            </p>
+            <div class="caso-stats">
+              <div>
+                <div class="caso-stat-num">3</div>
+                <div class="caso-stat-label">Almacenes conectados</div>
+              </div>
+              <div>
+                <div class="caso-stat-num">1,200+</div>
+                <div class="caso-stat-label">Envíos monitoreados</div>
+              </div>
+              <div>
+                <div class="caso-stat-num">Real-time</div>
+                <div class="caso-stat-label">Seguimiento de cruces</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="caso-visual">
+            <img
+              src="https://res.cloudinary.com/dijxgoytw/image/upload/v1787591969/Gemini_Generated_Image_m6nv24m6nv24m6nv_t7lqbf.jpg"
+              alt="Torre de control logística con seguimiento de envíos"
+              class="caso-screenshot"
+            />
+            <div class="caso-testimonio">
+              <p class="caso-testimonio-quote">Por fin podemos ver en un solo lugar qué está pasando en cada almacén y cada envío, sin llamar a nadie para preguntar.</p>
+              <p class="caso-testimonio-autor">— <b>Subgerente de Operaciones</b>, empresa de logística cross-border</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
+
 
   <!-- ═══════════ PROCESO ═══════════ -->
   <section class="proceso" id="proceso">
@@ -1189,6 +1258,13 @@
     });
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
+
+  function switchCaso(id, btn) {
+    document.querySelectorAll('.caso-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.caso-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('caso-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
